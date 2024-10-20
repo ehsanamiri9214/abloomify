@@ -15,6 +15,7 @@ export const isAuthenticated = async () =>
         const user = await getCurrentUser(contextSpec);
         return !!user;
       } catch (error) {
+        console.log({ error });
         return false;
       }
     },
