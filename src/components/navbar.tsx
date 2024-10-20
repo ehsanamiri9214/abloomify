@@ -1,5 +1,6 @@
 "use client";
 
+import { ROUTES } from "@/constants";
 import { Button, Divider, Flex, Text } from "@aws-amplify/ui-react";
 import { signOut } from "aws-amplify/auth";
 import { Hub } from "aws-amplify/utils";
@@ -16,11 +17,11 @@ const NavBar = ({ isSignedIn }: { isSignedIn: boolean }) => {
       switch (data.payload.event) {
         case "signedIn":
           setAuthCheck(true);
-          router.push("/");
+          router.push(ROUTES.HOME);
           break;
         case "signedOut":
           setAuthCheck(false);
-          router.push("/");
+          router.push(ROUTES.HOME);
           break;
       }
     });
@@ -32,17 +33,17 @@ const NavBar = ({ isSignedIn }: { isSignedIn: boolean }) => {
     if (authCheck) {
       await signOut();
     } else {
-      router.push("/signin");
+      router.push(ROUTES.SIGN_IN);
     }
   };
 
   const defaultRoutes = [
     {
-      href: "/",
+      href: ROUTES.HOME,
       label: "Home",
     },
     {
-      href: "/projects/new",
+      href: ROUTES.PROJECTS + ROUTES.NEW,
       label: "New Project",
       loggedIn: true,
     },
