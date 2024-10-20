@@ -1,6 +1,6 @@
 import { cookieBasedClient } from "@/utils/amplify-utils";
 
-const Home = async () => {
+const HomePage = async () => {
   const { data: tasks } = await cookieBasedClient.models.Task.list({
     selectionSet: ["title", "description", "id"],
     // authMode: "apiKey",
@@ -16,4 +16,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default HomePage;

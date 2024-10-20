@@ -1,6 +1,6 @@
 import { createProject } from "@/app/_actions/actions";
 
-const NewProject = () => {
+const NewProjectPage = () => {
   return (
     <div>
       <form action={createProject}>
@@ -24,4 +24,4 @@ const NewProject = () => {
   );
 };
 
-export default NewProject;
+export default NewProjectPage;

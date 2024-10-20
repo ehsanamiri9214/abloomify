@@ -43,6 +43,11 @@ const NavBar = ({ isSignedIn }: { isSignedIn: boolean }) => {
       label: "Home",
     },
     {
+      href: ROUTES.PROJECTS,
+      label: "Projects",
+      loggedIn: true,
+    },
+    {
       href: ROUTES.PROJECTS + ROUTES.NEW,
       label: "New Project",
       loggedIn: true,
