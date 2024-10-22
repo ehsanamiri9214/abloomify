@@ -1,5 +1,7 @@
 import Task from "@/components/task";
+import { ROUTES } from "@/constants";
 import { cookieBasedClient } from "@/utils/amplify-utils";
+import Link from "next/link";
 
 const Tasks = async () => {
   const { data: tasks } = await cookieBasedClient.models.Task.list({
@@ -7,16 +9,27 @@ const Tasks = async () => {
   });
   return (
     <section>
-      <h1>Tasks</h1>
-      <ul>
+      <h1 className="text-center capitalize my-4 text-lg">list all projects</h1>
+      <ul className="flex justify-center items-center flex-col flex-wrap gap-2 max-w-lg m-auto my-4">
         {tasks.map((item, index) => {
           return (
-            <li key={index}>
-              <Task item={item} />
+            <li key={index + ""} className="flex w-full">
+              <Link
+                href={ROUTES.PROJECTS + "/" + item.id + ROUTES.TASKS}
+                className="w-full"
+              >
+                <Task item={item} />
+              </Link>
             </li>
           );
         })}
       </ul>
+      <Link
+        href={"." + ROUTES.TASKS + ROUTES.NEW}
+        className="block max-w-lg m-auto p-4 bg-sky-400 capitalize text-white font-bold rounded-lg text-center"
+      >
+        + new task
+      </Link>
     </section>
   );
 };

@@ -47,11 +47,6 @@ const NavBar = ({ isSignedIn }: { isSignedIn: boolean }) => {
       label: "Projects",
       loggedIn: true,
     },
-    {
-      href: ROUTES.PROJECTS + ROUTES.NEW,
-      label: "New Project",
-      loggedIn: true,
-    },
   ];
 
   const routes = defaultRoutes.filter(
