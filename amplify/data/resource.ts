@@ -1,4 +1,3 @@
-import { allow } from "./../../node_modules/@aws-amplify/data-schema/src/Authorization";
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 
 /*== STEP 1 ===============================================================
@@ -23,7 +22,7 @@ const schema = a.schema({
     .model({
       title: a.string().required(),
       details: a.string().required(),
-      projectId: a.id(),
+      projectId: a.id().required(),
       project: a.belongsTo("Project", "projectId"),
       owner: a
         .string()
