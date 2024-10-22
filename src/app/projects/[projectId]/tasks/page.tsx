@@ -10,7 +10,11 @@ const Tasks = async () => {
   return (
     <section className="p-2">
       <h1 className="text-center capitalize my-4 text-lg">list all tasks</h1>
-      <ul className="flex justify-center items-center flex-col flex-wrap gap-2 max-w-lg m-auto my-4">
+      <div className="flex p-2 shadow-lg rounded-lg bg-white max-w-xl m-auto">
+        <p className="flex-1 capitalize font-bold">title</p>
+        <p className="flex-1 capitalize font-bold">details</p>
+      </div>
+      <ul className="flex justify-center items-center flex-col flex-wrap gap-2 max-w-xl m-auto my-4">
         {!tasks.length && <p>No tasks found!</p>}
         {tasks.map((item, index) => {
           return (
@@ -22,7 +26,7 @@ const Tasks = async () => {
       </ul>
       <Link
         href={"." + ROUTES.TASKS + ROUTES.NEW}
-        className="block max-w-lg m-auto p-4 bg-sky-400 capitalize text-white font-bold rounded-lg text-center"
+        className="block max-w-xl m-auto p-4 bg-sky-400 capitalize text-white font-bold rounded-lg text-center"
       >
         + new task
       </Link>
