@@ -7,27 +7,17 @@ specifies that any unauthenticated user can "create", "read", "update",
 and "delete" any "Todo" records.
 =========================================================================*/
 const schema = a.schema({
-  Project: a
-    .model({
-      title: a.string().required(),
-      about: a.string().required(),
-      tasks: a.hasMany("Task", "projectId"),
-      owner: a
-        .string()
-        .authorization((allow) => [allow.owner().to(["read", "delete"])]),
-    })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
-  Task: a
-    .model({
-      title: a.string().required(),
-      description: a.string().required(),
-      projectId: a.id(),
-      project: a.belongsTo("Project", "projectId"),
-      owner: a
-        .string()
-        .authorization((allow) => [allow.owner().to(["read", "delete"])]),
-    })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+  Project: a.model({
+    title: a.string().required(),
+    about: a.string().required(),
+    tasks: a.hasMany("Task", "projectId"),
+  }),
+  Task: a.model({
+    title: a.string().required(),
+    description: a.string().required(),
+    projectId: a.id(),
+    project: a.belongsTo("Project", "projectId"),
+  }),
 });
 
 export type Schema = ClientSchema<typeof schema>;
