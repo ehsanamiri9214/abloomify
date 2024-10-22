@@ -28,3 +28,18 @@ export const isAuthenticated = async () =>
       }
     },
   });
+
+export const getUser = async () => {
+  await runWithAmplifyServerContext({
+    nextServerContext: { cookies },
+    async operation(contextSpec) {
+      try {
+        const user = await getCurrentUser(contextSpec);
+        return user;
+      } catch (error) {
+        console.log({ error });
+        return false;
+      }
+    },
+  });
+};
