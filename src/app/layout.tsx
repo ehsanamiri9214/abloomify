@@ -1,4 +1,5 @@
 import Auth from "@/components/auth/auth";
+import Main from "@/components/main";
 import NavBar from "@/components/navbar";
 import { isAuthenticated } from "@/utils/amplify-utils";
 import type { Metadata } from "next";
@@ -33,8 +34,10 @@ export default async function RootLayout({
           bg-slate-200
           ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavBar isSignedIn={await isAuthenticated()} />
-        <Auth>{children}</Auth>
+        <Main>
+          <NavBar isSignedIn={await isAuthenticated()} />
+          <Auth>{children}</Auth>
+        </Main>
       </body>
     </html>
   );
