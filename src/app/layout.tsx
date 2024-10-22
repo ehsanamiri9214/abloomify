@@ -29,7 +29,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`
+          bg-slate-200
+          ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NavBar isSignedIn={await isAuthenticated()} />
         <Auth>{children}</Auth>

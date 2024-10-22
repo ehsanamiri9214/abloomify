@@ -66,7 +66,7 @@ const NavBar = ({ isSignedIn }: { isSignedIn: boolean }) => {
         alignItems={"center"}
         padding={"1rem"}
       >
-        <Flex as="nav" alignItems={"center"} gap={"3rem"} margin={"0 2rem"}>
+        <Flex as="nav" alignItems={"center"}>
           {routes.map((route, index) => (
             <Link key={index} href={route.href}>
               <Text>{route.label}</Text>
@@ -75,8 +75,7 @@ const NavBar = ({ isSignedIn }: { isSignedIn: boolean }) => {
         </Flex>
         <Button
           variation="primary"
-          borderRadius={"2rem"}
-          className="mr-4"
+          className="mr-4 !bg-sky-500 rounded-lg"
           onClick={signOutSignIn}
         >
           {authCheck ? "Sign Out" : "Sign In"}
