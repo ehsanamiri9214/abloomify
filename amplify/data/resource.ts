@@ -8,6 +8,13 @@ and "delete" any "Todo" records.
 =========================================================================*/
 
 const schema = a.schema({
+  Profile: a
+    .model({
+      email: a.string(),
+      firstName: a.string(),
+      lastName: a.string(),
+      userId: a.string(),
+    }),
   Project: a
     .model({
       title: a.string().required(),

@@ -4,7 +4,7 @@ import { useAppStore } from "@/stores";
 import { fetchAuthSession, getCurrentUser } from "aws-amplify/auth";
 import { ReactNode, useEffect } from "react";
 
-const Main = ({ children }: { children: ReactNode }) => {
+const MainHoc = ({ children }: { children: ReactNode }) => {
   const { userId, setUserId } = useAppStore();
 
   const getUserId = async (): Promise<void> => {
@@ -21,4 +21,4 @@ const Main = ({ children }: { children: ReactNode }) => {
   return <main>{children}</main>;
 };
 
-export default Main;
+export default MainHoc;
