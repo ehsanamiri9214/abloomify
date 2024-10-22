@@ -66,9 +66,13 @@ const NavBar = ({ isSignedIn }: { isSignedIn: boolean }) => {
         alignItems={"center"}
         padding={"1rem"}
       >
-        <Flex as="nav" alignItems={"center"}>
+        <Flex alignItems={"center"}>
           {routes.map((route, index) => (
-            <Link key={index} href={route.href}>
+            <Link
+              key={index}
+              href={route.href}
+              className="block p-2 transition border-b hover:border-sky-400"
+            >
               <Text>{route.label}</Text>
             </Link>
           ))}

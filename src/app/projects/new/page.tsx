@@ -14,7 +14,7 @@ const NewProjectPage = () => {
       <textarea
         name="about"
         id="about"
-        placeholder="About"
+        placeholder="About ..."
         className="p-4 border-b mb-1 rounded-lg"
         required
         rows={5}
