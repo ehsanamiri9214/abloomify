@@ -2,14 +2,9 @@ import { createTask } from "@/app/_actions/actions";
 
 const NewProjectPage = () => {
   return (
-    <>w
-      <h1 className="text-center capitalize my-4 text-lg">
-        create new task
-      </h1>
-      <form
-        action={createTask}
-        className="flex flex-col max-w-lg m-auto p-2"
-      >
+    <>
+      <h1 className="text-center capitalize my-4 text-lg">create new task</h1>
+      <form action={createTask} className="flex flex-col max-w-lg m-auto p-2">
         <input
           type="text"
           name="title"
