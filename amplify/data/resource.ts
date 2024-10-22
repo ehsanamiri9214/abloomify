@@ -23,17 +23,6 @@ const schema = a.schema({
       description: a.string().required(),
       projectId: a.id(),
       project: a.belongsTo("Project", "projectId"),
-      comments: a.hasMany("Comment", "taskId"),
-      owner: a
-        .string()
-        .authorization((allow) => [allow.owner().to(["read", "delete"])]),
-    })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
-  Comment: a
-    .model({
-      content: a.string().required(),
-      taskId: a.id(),
-      task: a.belongsTo("Task", "taskId"),
       owner: a
         .string()
         .authorization((allow) => [allow.owner().to(["read", "delete"])]),
