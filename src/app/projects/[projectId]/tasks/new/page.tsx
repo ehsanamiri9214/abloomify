@@ -2,7 +2,7 @@ import { createTask } from "@/app/_actions/actions";
 
 const NewProjectPage = () => {
   return (
-    <>
+    <>w
       <h1 className="text-center capitalize my-4 text-lg">
         create new task
       </h1>
