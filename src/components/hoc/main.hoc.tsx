@@ -1,16 +1,14 @@
 "use client";
 
 import { useAppStore } from "@/stores";
-import { fetchAuthSession, getCurrentUser } from "aws-amplify/auth";
+import { getCurrentUser } from "aws-amplify/auth";
 import { ReactNode, useEffect } from "react";
 
 const MainHoc = ({ children }: { children: ReactNode }) => {
-  const { userId, setUserId } = useAppStore();
+  const { setUserId } = useAppStore();
 
   const getUserId = async (): Promise<void> => {
-    const authSession = await fetchAuthSession();
-    const credentials = authSession.credentials;
-    const { username, userId, signInDetails } = await getCurrentUser();
+    const { userId } = await getCurrentUser();
     if (userId) setUserId(userId);
   };
 

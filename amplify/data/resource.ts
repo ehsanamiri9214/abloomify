@@ -8,18 +8,18 @@ and "delete" any "Todo" records.
 =========================================================================*/
 
 const schema = a.schema({
-  Profile: a
-    .model({
-      email: a.string(),
-      firstName: a.string(),
-      lastName: a.string(),
-      userId: a.string(),
-    }),
+  Profile: a.model({
+    email: a.string(),
+    firstName: a.string(),
+    lastName: a.string(),
+    userId: a.string(),
+  }),
   Project: a
     .model({
       title: a.string().required(),
       about: a.string().required(),
       tasks: a.hasMany("Task", "projectId"),
+      members: a.hasMany("Member", "projectId"),
       owner: a
         .string()
         .authorization((allow) => [allow.owner().to(["read", "delete"])]),
@@ -31,11 +31,17 @@ const schema = a.schema({
       details: a.string().required(),
       projectId: a.id().required(),
       project: a.belongsTo("Project", "projectId"),
+      assignee: a.string(),
       owner: a
         .string()
         .authorization((allow) => [allow.owner().to(["read", "delete"])]),
     })
     .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+  Member: a.model({
+    userId: a.string(),
+    projectId: a.id().required(),
+    project: a.belongsTo("Project", "projectId"),
+  }),
 });
 
 export type Schema = ClientSchema<typeof schema>;
