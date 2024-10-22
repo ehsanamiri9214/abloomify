@@ -10,7 +10,7 @@ const Projects = async () => {
       <ul>
         {projects.map((item, index) => {
           return (
-            <li>
+            <li key={index}>
               <Project item={item} />
             </li>
           );

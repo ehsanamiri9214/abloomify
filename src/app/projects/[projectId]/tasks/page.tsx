@@ -1,3 +1,4 @@
+import Task from "@/components/task";
 import { cookieBasedClient } from "@/utils/amplify-utils";
 
 const Tasks = async () => {
@@ -10,8 +11,8 @@ const Tasks = async () => {
       <ul>
         {tasks.map((item, index) => {
           return (
-            <li>
-              {item.title} - {item.details}
+            <li key={index}>
+              <Task item={item} />
             </li>
           );
         })}

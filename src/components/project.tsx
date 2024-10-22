@@ -1,7 +1,7 @@
 const Project = ({ item }: { item: any }) => {
   return (
     <div>
-      {item.name}-{item.details}-{item.id}
+      {item.name}-{item.about}-{item.id}
     </div>
   );
 };
