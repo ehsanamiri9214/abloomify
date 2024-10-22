@@ -14,7 +14,7 @@ const createProject = async (formData: FormData) => {
 const createTask = async (formData: FormData) => {
   const { data } = await cookieBasedClient.models.Task.create({
     title: formData.get("title")?.toString() || "",
-    description: formData.get("description")?.toString() || "",
+    details: formData.get("details")?.toString() || "",
   });
   redirect("/");
 };

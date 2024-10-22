@@ -14,7 +14,7 @@ const schema = a.schema({
   }),
   Task: a.model({
     title: a.string().required(),
-    description: a.string().required(),
+    details: a.string().required(),
     projectId: a.id(),
     project: a.belongsTo("Project", "projectId"),
   }),
