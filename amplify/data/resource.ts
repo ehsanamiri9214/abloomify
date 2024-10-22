@@ -1,3 +1,4 @@
+import { allow } from "./../../node_modules/@aws-amplify/data-schema/src/Authorization";
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 
 /*== STEP 1 ===============================================================
@@ -6,18 +7,29 @@ adding a new "isDone" field as a boolean. The authorization rule below
 specifies that any unauthenticated user can "create", "read", "update", 
 and "delete" any "Todo" records.
 =========================================================================*/
+
 const schema = a.schema({
-  Project: a.model({
-    title: a.string().required(),
-    about: a.string().required(),
-    tasks: a.hasMany("Task", "projectId"),
-  }),
-  Task: a.model({
-    title: a.string().required(),
-    details: a.string().required(),
-    projectId: a.id(),
-    project: a.belongsTo("Project", "projectId"),
-  }),
+  Project: a
+    .model({
+      title: a.string().required(),
+      about: a.string().required(),
+      tasks: a.hasMany("Task", "projectId"),
+      owner: a
+        .string()
+        .authorization((allow) => [allow.owner().to(["read", "delete"])]),
+    })
+    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+  Task: a
+    .model({
+      title: a.string().required(),
+      details: a.string().required(),
+      projectId: a.id(),
+      project: a.belongsTo("Project", "projectId"),
+      owner: a
+        .string()
+        .authorization((allow) => [allow.owner().to(["read", "delete"])]),
+    })
+    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;

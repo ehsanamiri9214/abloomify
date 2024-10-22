@@ -1,3 +1,4 @@
+import Project from "@/components/project";
 import { cookieBasedClient } from "@/utils/amplify-utils";
 
 const Projects = async () => {
@@ -10,7 +11,7 @@ const Projects = async () => {
         {projects.map((item, index) => {
           return (
             <li>
-              {item.title} - {item.about}
+              <Project item={item} />
             </li>
           );
         })}
